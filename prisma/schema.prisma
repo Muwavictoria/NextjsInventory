@@ -22,7 +22,7 @@ model Product {
   product_description String
   product_location    String
   unit_id             Int
-  caregory_id         Int
+  category_id         Int
   tags                String
   buying_price        Int
   selling_price       Int
@@ -31,11 +31,12 @@ model Product {
   ma_id               String
   st_id               String
   product_status      Int
-  product_created_at  String
-  product_updated_at  String
+  product_created_at  DateTime @default(now())
+  product_updated_at  DateTime @updatedAt
+
 
   
-  category            Category @relation(fields: [caregory_id], references: [category_id])
+  category            Category @relation(fields: [category_id], references: [category_id])
   currency            Currency @relation(fields: [currency_id], references: [currency_id])
   productImages       ProductImage[]
   saleProducts        SaleProduct[]
