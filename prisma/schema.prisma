@@ -59,19 +59,19 @@ model Supplier {
 }
 
 model Category {
-  category_id Int      @id
+  category_id Int      @id  @default(autoincrement())
   category    String
 
   products    Product[]
 }
 
 model Tag {
-  tag_id Int @id
-  tag    Int
+  tag_id Int @id  @default(autoincrement())
+  tag    String @unique
 }
 
 model Currency {
-  currency_id         Int      @id
+  currency_id         Int      @id  @default(autoincrement())
   currency_code       String
   currency_name       String
   currency_rate       Int
@@ -84,7 +84,7 @@ model Currency {
 }
 
 model ProductImage {
-  image_id   Int  @id
+  image_id   Int  @id  @default(autoincrement())
   product_id Int
   image_url  String
 
@@ -107,7 +107,7 @@ model Sale {
 }
 
 model Purchase {
-  purchase_id           Int      @id
+  purchase_id           Int      @id  @default(autoincrement())
   purchase_quantity     Int
   purchase_unit_cost    Int
   purchase_total_cost   Int
@@ -118,7 +118,7 @@ model Purchase {
 }
 
 model SaleProduct {
-  sale_product_id         Int      @id
+  sale_product_id         Int      @id  @default(autoincrement())
   sale_id                 Int
   product_id              Int
   quantity                Int
@@ -161,4 +161,13 @@ model Stock {
   quantity     Int
   updated_at   DateTime @updatedAt
 
+}
+
+model User {
+  id      Int      @id @default(autoincrement())
+  email   String   @unique
+  username    String?  @unique
+  password   String
+  createdAt DateTime @default(now())
+  updateAt  DateTime @updatedAt
 }

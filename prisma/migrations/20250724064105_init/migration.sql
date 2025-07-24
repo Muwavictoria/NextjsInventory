@@ -1,0 +1,2 @@
+-- AlterTable
+ALTER TABLE `tag` MODIFY `tag` VARCHAR(191) NOT NULL;

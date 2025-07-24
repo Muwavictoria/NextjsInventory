@@ -11,7 +11,7 @@ export async function POST(req: NextRequest) {
   const parsed = CreateProductDto.safeParse(body);
 
   if (!parsed.success) {
-    return NextResponse.json({ error: parsed.error.format() }, { status: 400 });
+    return NextResponse.json({ error: parsed.error.flatten() }, { status: 400 });
   }
 
   try {
