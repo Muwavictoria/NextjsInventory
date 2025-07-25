@@ -17,7 +17,7 @@ datasource db {
 
 model Product {
   product_id          Int       @id @default(autoincrement())
-  product_name        String
+  product_name        String    @unique
   product_barcode     Int       @unique
   product_description String
   product_location    String
